@@ -112,10 +112,67 @@
 
 
 
+			/* Horizontal gallery layout */
+			.horizontal main {
+				display: flex;
+			}
+			.horizontal #Intro,
+			.horizontal section {
+				width: 95vw;
+				flex: 0 0 auto;
+			}
+
+			/* Horizontal Scrolling gallery… */
+			body.horizontal { overflow: hidden; }
+			.horizontal main {
+				overflow: scroll;
+				overflow-x: scroll;
+				scroll-snap-type: x mandatory;
+			}
+			.horizontal #Intro,
+			.horizontal section {
+				scroll-snap-align: center;
+			}
+
+
+			/* Vertical gallery layout */
+			.vertical main {}
+
+			.vertical #Intro,
+			.vertical section {
+				height: 100vh;
+			}
+			#Intro, section div.image, section div.text{
+				display: flex; /* TO-DO: fix issue with multiple items in a div.text !!*/
+				align-items: center;
+			}
+			#IntroText { padding-top: 0rem; } /* contra-indication… */
+
+			/* Vertical Scrolling gallery… */
+			/* NOT WORKING. Fuck. */
+			/*
+			body.vertical {
+				overflow: hidden;
+			}
+			.vertical main {
+				overflow: scroll;
+				overflow-y: scroll;
+				scroll-snap-type: y mandatory;
+				scroll-snap-type: y proximity;
+			}
+			.vertical #Intro,
+			.vertical section {
+				scroll-snap-align: start;
+			}
+			*/
 
 		</style>
 	</head>
-	<body>
+<!--
+	<body class="vertical">
+-->
+	<body class="horizontal">
+
 	<main>
 
 		<div id="Intro">
@@ -142,6 +199,7 @@
 			</div>
 			<div class="text">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 		</section>
 
@@ -150,7 +208,7 @@
 				<img src="https://picsum.photos/600/400?random=3&blur=8" alt="">
 			</div>
 			<div class="text">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
 		</section>
 
@@ -173,5 +231,6 @@
 		</section>
 
 	</main>
+
 	</body>
 </html>
