@@ -135,8 +135,8 @@
 			}
 			
 			.horizontal section div.text{
-				overflow: scroll;
-				overflow-y: scroll; /* nope… TO-DO */
+				/*overflow: scroll;*/
+				/*overflow-y: scroll;*/ /* nope… TO-DO */
 			}
 
 			/* content alignment… */
@@ -149,7 +149,15 @@
 			}
 			.horizontal #IntroText { /*padding-top: 0rem;*/ } /* contra-indication… */
 
-
+			.horizontal #IntroText::after{
+				display: block;
+				width: 100%;
+				content: "→";
+				text-align: right;
+				font-weight: 100;
+				font-size: 2rem;
+				color: #999;
+			}
 
 
 			/* Vertical gallery layout */
