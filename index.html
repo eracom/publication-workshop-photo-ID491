@@ -7,6 +7,7 @@
 		<style media="screen">
 
 			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,500;1,100;1,300;1,500&display=swap');
+
 			/* unicode "e2 86 92" is a rightwards facing arrow. → → → https://codepoints.net/U+2192 & https://github.com/weiweihuanghuang/Work-Sans/issues/31 */
 			@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&text=%E2%86%92');
 
@@ -46,6 +47,8 @@
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Mise en page générale */
 
+			/* box-sizing: content-box|border-box */
+
 			body, main, section {
 				 margin: 0;
 				padding: 0;
@@ -64,7 +67,6 @@
 				section div.text  { /* width: 40%;*/ }	/* provisoire */
 				#IntroText { width: 40rem; }
 			}
-
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
@@ -87,8 +89,6 @@
 				#IntroText { width: calc(60% - 2rem ); }
 			}
 			*/
-
-			/* box-sizing: content-box|border-box /*
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
@@ -116,6 +116,7 @@
 				section div.image { width: calc(60% - calc( var(--gutter) * 2 ) ); }
 				section div.text  { width: calc(40% - calc( var(--gutter) * 2 ) ); }
 			}
+
 
 
 
@@ -185,11 +186,12 @@
 				html won't work in Chrome…
 				body won't work in Safari… 
 				…but using them *both* works in *both* browsers…
+				(and apparently does not interfere with a horizontal layout)
 				¯\_(ツ)_/¯
 			*/
 
-			/*	manditory has issues when content > 100vh…		*/
 			/*	html, body { scroll-snap-type: y mandatory; }	*/
+			/*	manditory has issues when content > 100vh…		*/
 
 			.vertical #IntroText::after {
 				display: block;
@@ -203,13 +205,14 @@
 
 		</style>
 	</head>
+
 <!--
-	<body>
-	<body class="horizontal">
--->
 	<body class="vertical">
+	<body>
+-->
+	<body class="horizontal">
 <!--
-	Choose your own adventure!
+	Choose your own adventure! Use <body class="vertical"> or <body class="horizontal">, or neither!
 -->
 
 	<main>
