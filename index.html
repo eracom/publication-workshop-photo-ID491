@@ -137,6 +137,7 @@
 			.horizontal main {
 				overflow: scroll;
 				overflow-x: scroll;
+				/*scroll-snap-type: x proximity;*/
 				scroll-snap-type: x mandatory;
 			}
 			.horizontal section {
@@ -173,36 +174,40 @@
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Vertical gallery layout */
-			.vertical main { }
 
 			.vertical section {
-				height: 100vh;
-			}
-
-			/* Vertical Scrolling gallery… */
-			/* NOT WORKING. Fuck. */
-			/*
-			body.vertical {
-				overflow: hidden;
-			}
-			.vertical main {
-				overflow: scroll;
-				overflow-y: scroll;
-				scroll-snap-type: y mandatory;
-				scroll-snap-type: y proximity;
-			}
-			.vertical section {
+				min-height: 100vh;
 				scroll-snap-align: start;
 			}
+
+			html, body { scroll-snap-type: y proximity; }
+			/*
+				html won't work in Chrome…
+				body won't work in Safari… 
+				…but using them *both* works in *both* browsers…
+				¯\_(ツ)_/¯
 			*/
+
+			/*	manditory has issues when content > 100vh…		*/
+			/*	html, body { scroll-snap-type: y mandatory; }	*/
+
+			.vertical #IntroText::after {
+				display: block;
+				width: 100%;
+				content: "↓ scroll… ↓";
+				text-align: left;
+				font-weight: 100;
+				font-size: 2rem;
+				color: #999;
+			}
 
 		</style>
 	</head>
 <!--
-	<body class="vertical">
 	<body>
--->
 	<body class="horizontal">
+-->
+	<body class="vertical">
 <!--
 	Choose your own adventure!
 -->
