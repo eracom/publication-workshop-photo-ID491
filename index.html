@@ -31,10 +31,10 @@
 			#Intro h2 {	font-weight: 300;	font-size: 2rem;	line-height: 100%;	}
 			#Intro h3 {	font-weight: 300;	font-size: 1.25rem;	line-height: 100%;	font-style: italic; }
 
-			main > section:nth-of-type(odd) {
+			main > section:nth-of-type(even) {
 				background-color: rgba(0,0,0,0.05);
 			}
-			main > section:nth-of-type(odd) img {
+			main > section:nth-of-type(even) img {
 				outline: 4px solid rgba(255,255,255,1);
 			}
 
@@ -42,14 +42,14 @@
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Mise en page */
 
-			body, main, #Intro, section {
+			body, main, section {
 				margin:  0;
 				padding: 0;
 			}
 
 			img { width: 100%; }
 
-			#Intro, section {
+			section {
 				min-height: 100vh;
 			}
 
@@ -72,6 +72,7 @@
 
 
 			/* image & text sans var() */
+
 			/*
 			#Intro {
 				padding: 1rem;
@@ -90,7 +91,10 @@
 			}
 			*/
 
+
+
 			/* image & text utilisant calc() et var() */
+
 			:root {
 				--gutter: 1rem;
 			}
@@ -119,20 +123,20 @@
 			.horizontal main {
 				display: flex;
 			}
-			.horizontal #Intro,
 			.horizontal section {
 				width: 95vw;
 				flex: 0 0 auto;
 			}
 
 			/* Horizontal Scrolling gallery… */
-			body.horizontal { overflow: hidden; }
+			body.horizontal {
+				overflow: hidden;
+			}
 			.horizontal main {
 				overflow: scroll;
 				overflow-x: scroll;
 				scroll-snap-type: x mandatory;
 			}
-			.horizontal #Intro,
 			.horizontal section {
 				scroll-snap-align: center;
 			}
@@ -166,7 +170,6 @@
 			/* Vertical gallery layout */
 			.vertical main {}
 
-			.vertical #Intro,
 			.vertical section {
 				height: 100vh;
 			}
@@ -183,7 +186,6 @@
 				scroll-snap-type: y mandatory;
 				scroll-snap-type: y proximity;
 			}
-			.vertical #Intro,
 			.vertical section {
 				scroll-snap-align: start;
 			}
@@ -199,14 +201,14 @@
 
 	<main>
 
-		<div id="Intro">
+		<section id="Intro">
 			<div id="IntroText">
 				<h2>Prénom NomdeFamille</h2>
 				<h1>Titre du Projet</h1>
 				<h3>Phrase qui explique en quelques mots</h3>
 				<p>Texte d'introduction lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-		</div>
+			</div><!-- IntroText -->
+		</section><!-- #Intro -->
 
 		<section>
 			<div class="image">
@@ -261,6 +263,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 		</section>
+
 
 	</main>
 
