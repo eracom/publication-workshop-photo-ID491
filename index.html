@@ -9,6 +9,8 @@
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Design */
 			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,500;1,100;1,300;1,500&display=swap');
+			/* unicode "e2 86 92" is a rightwards facing arrow. → → → https://codepoints.net/U+2192 & https://github.com/weiweihuanghuang/Work-Sans/issues/31 */
+			@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&text=%E2%86%92');
 			body {
 				font-family: 'Work Sans', sans-serif;
 				font-weight: 300;
@@ -155,7 +157,7 @@
 			.horizontal #IntroText::after {
 				display: block;
 				width: 100%;
-				content: "• • →";
+				content: "→";
 				text-align: right;
 				font-weight: 100;
 				font-size: 2rem;
