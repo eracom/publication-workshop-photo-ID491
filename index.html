@@ -6,7 +6,6 @@
 		<title>ID491 Photo Workshop Gallery</title>
 		<style media="screen">
 
-
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Design */
 			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,500;1,100;1,300;1,500&display=swap');
@@ -40,10 +39,10 @@
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
-			/* Mise en page */
+			/* Mise en page générale */
 
 			body, main, section {
-				margin:  0;
+				 margin: 0;
 				padding: 0;
 			}
 
@@ -52,11 +51,6 @@
 			section {
 				min-height: 100vh;
 			}
-
-			#IntroText {
-				padding-top: 8rem;
-			}
-
 
 			@media (min-width: 640px) {
 				section { display: flex; }
@@ -68,10 +62,8 @@
 
 
 
-
-
-
-			/* image & text sans var() */
+			/*	-	-	-	-	-	-	-	-	-	-	-	*/
+			/* marges et disposition image & text sans var() */
 
 			/*
 			#Intro {
@@ -93,7 +85,8 @@
 
 
 
-			/* image & text utilisant calc() et var() */
+			/*	-	-	-	-	-	-	-	-	-	-	-	*/
+			/* marges et disposition image & text utilisant calc() et var() */
 
 			:root {
 				--gutter: 1rem;
@@ -108,24 +101,26 @@
 			}
 
 			section div.image, section div.text {
-				margin:  calc( var(--gutter) / 2 );
+				 margin: calc( var(--gutter) / 2 );
 				padding: calc( var(--gutter) / 2 );
 			}
 
 			@media (min-width: 640px) {
+				       #IntroText { width: calc(60% - calc( var(--gutter) * 2 ) ); }
 				section div.image { width: calc(60% - calc( var(--gutter) * 2 ) ); }
 				section div.text  { width: calc(40% - calc( var(--gutter) * 2 ) ); }
-				#IntroText { width: calc(60% - calc( var(--gutter) * 2 ) ); }
 			}
 
 
+
+			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Horizontal gallery layout */
 			.horizontal main {
 				display: flex;
 				flex-wrap: nowrap;
 			}
 			.horizontal section {
-				width: calc(100vw - calc( var(--gutter) * 4 ) );;
+				width: calc(100vw - calc( var(--gutter) * 4 ) );
 				flex: 0 0 auto;
 			}
 
@@ -168,6 +163,9 @@
 			}
 
 
+
+
+			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Vertical gallery layout */
 			.vertical main {}
 
