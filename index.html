@@ -6,11 +6,14 @@
 		<title>ID491 Photo Workshop Gallery</title>
 		<style media="screen">
 
-			/*	-	-	-	-	-	-	-	-	-	-	-	*/
-			/* Design */
 			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,500;1,100;1,300;1,500&display=swap');
 			/* unicode "e2 86 92" is a rightwards facing arrow. → → → https://codepoints.net/U+2192 & https://github.com/weiweihuanghuang/Work-Sans/issues/31 */
 			@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&text=%E2%86%92');
+
+
+			/*	-	-	-	-	-	-	-	-	-	-	-	*/
+			/* Design */
+
 			body {
 				font-family: 'Work Sans', sans-serif;
 				font-weight: 300;
@@ -85,6 +88,7 @@
 			}
 			*/
 
+			/* box-sizing: content-box|border-box /*
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
@@ -138,31 +142,31 @@
 			.horizontal section {
 				scroll-snap-align: center;
 			}
-			
-			.horizontal section div.text {
-				/*overflow: scroll;*/
-				/*overflow-y: scroll;*/ /* nope… TO-DO */
-			}
 
-			/* content alignment… */
-			.horizontal #Intro, .horizontal section div.image, .horizontal section div.text {
-				/*display: flex;*/ /* TO-DO: fix issue with multiple items in a div.text !!*/
-				/*align-items: center;*/
-			}
-			.horizontal section div.image *, .horizontal section div.text * {
-				/*width: 100%;*//*does not fix the above… */
-			}
-			.horizontal #IntroText { /*padding-top: 0rem;*/ } /* contra-indication… */
 
 			.horizontal #IntroText::after {
 				display: block;
 				width: 100%;
-				content: "→";
+				content: "scroll… →";
 				text-align: right;
 				font-weight: 100;
 				font-size: 2rem;
 				color: #999;
 			}
+
+			/* TO-DO */
+			
+			/*
+				Problème: si le contenu est plus grand que 100vh, pas de scroll vertical…
+				j'ai essayé 
+					.horizontal section { overflow-y: scroll; }
+				sans succès…
+			*/
+
+			/*
+				Problème: alignement centrement vertical du contenu
+				un flexbox à l'interieure d'un section div crée d'autres problèmes…
+			*/
 
 
 
@@ -199,6 +203,9 @@
 	<body>
 -->
 	<body class="horizontal">
+<!--
+	Choose your own adventure!
+-->
 
 	<main>
 
