@@ -8,8 +8,11 @@
 
 			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,500;1,100;1,300;1,500&display=swap');
 
-			/* unicode "e2 86 92" is a rightwards facing arrow. → → → https://codepoints.net/U+2192 & https://github.com/weiweihuanghuang/Work-Sans/issues/31 */
-			@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&text=%E2%86%92');
+			/* unicode "e2 86 92" is a rightwards facing arrow. → → → 
+			https://codepoints.net/U+2192 & https://github.com/weiweihuanghuang/Work-Sans/issues/31
+			https://stackoverflow.com/questions/40822458/styled-unicode-arrows-not-showing-up-with-google-fonts-web-font/40822459
+			*/
+			@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&&text=%E2%86%90|%E2%86%92');
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
@@ -36,6 +39,8 @@
 			#Intro h2 {	font-weight: 300;	font-size: 2rem;	line-height: 100%;	}
 			#Intro h3 {	font-weight: 300;	font-size: 1.25rem;	line-height: 100%;	font-style: italic; }
 
+
+			/* section blocs en couleurs alternées */
 			main > section:nth-of-type(even) {
 				background-color: rgba(0,0,0,0.05);
 			}
@@ -43,6 +48,40 @@
 				outline: 4px solid rgba(255,255,255,1);
 			}
 
+			a,
+			a:link,
+			a:hover,
+			a:active,
+			a:visited{
+				color: #224466;
+			}
+
+			nav.pageNav a,
+			nav.pageNav a:link,
+			nav.pageNav a:hover,
+			nav.pageNav a:active,
+			nav.pageNav a:visited{
+				color: #224466;
+				padding-left: 0.5em;
+				padding.right: 0.5em;
+				text-decoration: none;
+			}
+
+			nav.pageNav a.disabled { color: #CCC; }
+			nav.pageNav a.active   { color: #000; border-bottom: 2px solid; }
+			nav.pageNav a.disabled, 
+			nav.pageNav a.active {
+				cursor: default;
+			}
+
+			html, body {
+				scroll-behavior: smooth;
+				/*
+					Safari does not support scroll-behavior: smooth;
+					https://stackoverflow.com/questions/56011205/is-there-a-safari-equivalent-for-scroll-behavior-smooth/56011281
+					https://css-tricks.com/snippets/jquery/smooth-scrolling/
+				*/
+			}
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
 			/* Mise en page générale */
@@ -60,35 +99,7 @@
 				min-height: 100vh;
 			}
 
-			@media (min-width: 640px) {
-				section { display: flex; }
-				section div.image, section div.text { flex: 0 0 auto; }
-				section div.image { /* width: 60%;*/ }	/* provisoire */
-				section div.text  { /* width: 40%;*/ }	/* provisoire */ /* TO-DO FIX THIS SHIT; DUBMASS*/
-				#IntroText { width: 40rem; }
-			}
 
-
-			/*	-	-	-	-	-	-	-	-	-	-	-	*/
-			/* marges et disposition image & text sans var() */
-
-			/*
-			#Intro {
-				padding: 1rem;
-			}
-			section {
-				padding: 0.5rem;
-			}
-			section div.image, section div.text {
-				margin: 0.5rem;
-				padding: 0.5rem;
-			}
-			@media (min-width: 640px){
-				section div.image { width: calc(60% - 2rem); }
-				section div.text  { width: calc(40% - 2rem); }
-				#IntroText { width: calc(60% - 2rem ); }
-			}
-			*/
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
@@ -96,10 +107,6 @@
 
 			:root {
 				--gutter: 1rem;
-			}
-
-			#Intro { /* TO-DO REMOVE THIS SHIT; DUBMASS*/
-				padding: var(--gutter);
 			}
 
 			section {
@@ -112,6 +119,9 @@
 			}
 
 			@media (min-width: 640px) {
+				section { display: flex; }
+				section div.image, section div.text { flex: 0 0 auto; }
+
 				       #IntroText { width: calc(60% - calc( var(--gutter) * 2 ) ); }
 				section div.image { width: calc(60% - calc( var(--gutter) * 2 ) ); }
 				section div.text  { width: calc(40% - calc( var(--gutter) * 2 ) ); }
@@ -121,58 +131,17 @@
 
 
 			/*	-	-	-	-	-	-	-	-	-	-	-	*/
-			/* Horizontal gallery layout */
-			.horizontal main {
-				display: flex;
-				flex-wrap: nowrap;
-			}
-			.horizontal section {
-				width: calc(100vw - calc( var(--gutter) * 4 ) );
-				flex: 0 0 auto;
+			/* Images seules */
+
+			body.imagesOnly {}
+
+			body.imagesOnly section div.text {
+				display: none;
 			}
 
-			/* Horizontal Scrolling gallery… */
-			body.horizontal {
-				overflow: hidden;
+			body.imagesOnly section div.image {
+				width: calc(100% - calc( var(--gutter) * 2 ) );
 			}
-			.horizontal main {
-				overflow: scroll;
-				overflow-x: scroll;
-				/*scroll-snap-type: x proximity;*/
-				scroll-snap-type: x mandatory;
-			}
-			.horizontal section {
-				scroll-snap-align: center;
-			}
-
-
-			.horizontal #IntroText::after {
-				display: block;
-				width: 100%;
-				content: "scroll… →";
-				text-align: right;
-				font-weight: 100;
-				font-size: 2rem;
-				color: #999;
-			}
-
-			/* TO-DO */
-			
-			/*
-				Problème: si le contenu est plus grand que 100vh, pas de scroll vertical…
-				j'ai essayé 
-					.horizontal section { overflow-y: scroll; }
-				sans succès…
-			*/
-			
-			/*
-				Problème: UI/UX clusterfuck: this does NOT work with a "mouse" mouse…
-			*/
-
-			/*
-				Problème: alignement centrement vertical du contenu
-				un flexbox à l'interieure d'un section div crée d'autres problèmes…
-			*/
 
 
 
@@ -197,26 +166,89 @@
 			/*	html, body { scroll-snap-type: y mandatory; }	*/
 			/*	manditory has issues when content > 100vh…		*/
 
+
+			/* ajouter un mention "↓ scroll… ↓" */
 			.vertical #IntroText::after {
 				display: block;
 				width: 100%;
-				content: "↓ scroll… ↓";
+				content: "↓";
 				text-align: left;
 				font-weight: 100;
 				font-size: 2rem;
 				color: #999;
 			}
 
+
+
+
+			/*	-	-	-	-	-	-	-	-	-	-	-	*/
+			/* Horizontal gallery layout */
+			.horizontal main {
+				display: flex;
+				flex-wrap: nowrap;
+			}
+			.horizontal section {
+				width: calc(100vw - calc( var(--gutter) * 4 ) ); /* les blocs sont -un peu- moins large que la fenetre… */
+				flex: 0 0 auto;
+			}
+
+			/* Horizontal Scrolling gallery… */
+			body.horizontal {
+				overflow: hidden;
+			}
+			.horizontal main {
+				overflow: scroll;
+				overflow-x: scroll;
+				/*scroll-snap-type: x proximity;*/
+				scroll-snap-type: x mandatory;
+			}
+			.horizontal section {
+				scroll-snap-align: center;
+			}
+
+			/* ajouter un mention "scroll… →" */
+			.horizontal #IntroText::after {
+				display: block;
+				width: 100%;
+				content: "→";
+				text-align: right;
+				font-weight: 100;
+				font-size: 2rem;
+				color: #999;
+			}
+
+			/* horizontal TO-DO */
+			
+			/*
+				Problème: si le contenu est plus grand que 100vh, pas de scroll vertical…
+				j'ai essayé 
+					.horizontal section { overflow-y: scroll; }
+				sans succès…
+			*/
+			
+			/*
+				Problème: UI/UX clusterfuck: this does NOT work with a "mouse" mouse…
+			*/
+
+			/*
+				Problème: alignement centrement vertical du contenu
+				un flexbox à l'interieure d'un section div crée d'autres problèmes…
+			*/
+
 		</style>
 	</head>
 
 <!--
-	<body class="vertical">
 	<body>
--->
 	<body class="horizontal">
+	<body class="horizontal imagesOnly">
+	<body class="vertical">
+	<body class="vertical imagesOnly">
+-->
+	<body class="vertical">
 <!--
 	Choose your own adventure! Use <body class="vertical"> or <body class="horizontal">, or neither!
+	Ajouter la classe "imagesOnly" si vous n'avez pas de texte…
 -->
 
 	<main>
@@ -227,6 +259,14 @@
 				<h1>Titre du Projet</h1>
 				<h3>Phrase qui explique en quelques mots</h3>
 				<p>Texte d'introduction lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			<!-- Si vous utilisez une navigation interne … -->
+			<!--
+				<nav class="pageNav">
+					<a href="#Alpha">↓</a>
+				</nav>
+			-->
+
 			</div><!-- IntroText -->
 		</section><!-- #Intro -->
 
@@ -283,6 +323,72 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 		</section>
+
+
+
+
+
+		<!-- 
+			Si vous souhaitez avoir une navigation interne de la page, …
+		-->
+
+		<section id="Alpha">
+			<div class="image">
+				<img src="https://picsum.photos/600/400?random=6&blur=8" alt="">
+			</div>
+			<div class="text">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	
+				<nav class="pageNav">
+					<a href=""			class="disabled"	>←			</a>
+					<a href="#Alpha"	class="active"		>Alpha		</a>
+					<a href="#Bravo"						>Bravo		</a>
+					<a href="#Charlie"						>Charlie	</a>
+					<a href="#Bravo"						>→			</a>
+				</nav>
+	
+			</div>
+		</section>
+
+
+		<section id="Bravo">
+			<div class="image">
+				<img src="https://picsum.photos/600/400?random=7&blur=8" alt="">
+			</div>
+			<div class="text">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<nav class="pageNav">
+					<a href="#"								>←			</a>
+					<a href="#Alpha"						>Alpha		</a>
+					<a href="#Bravo"		class="active"	>Bravo		</a>
+					<a href="#Charlie"						>Charlie	</a>
+					<a href="#Bravo"						>→			</a>
+				</nav>
+
+			</div>
+		</section>
+
+
+		<section id="Charlie">
+			<div class="image">
+				<img src="https://picsum.photos/600/400?random=8&blur=8" alt="">
+			</div>
+			<div class="text">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<nav class="pageNav">
+					<a href=""								>←			</a>
+					<a href="#Alpha"						>Alpha		</a>
+					<a href="#Bravo"						>Bravo		</a>
+					<a href="#Charlie"	class="active"		>Charlie	</a>
+					<a href=""			class="disabled"	>→			</a>
+				</nav>
+
+			</div>
+		</section>
+
+
 
 
 	</main>
