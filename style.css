@@ -83,6 +83,7 @@
 	}
 
 	img { width: 100%; }
+	img.verticalImage { width: 67%; }
 
 	section {
 		min-height: 100vh;
